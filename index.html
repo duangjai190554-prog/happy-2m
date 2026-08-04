@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 2-Month Anniversary</title>
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Mali', cursive, sans-serif; }
+body { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg, #1e0d36, #321a52, #18092e); color: #fff; overflow-x: hidden; padding: 20px; text-align: center; }
+.container { display: flex; flex-direction: column; align-items: center; gap: 20px; max-width: 520px; width: 100%; position: relative; }
+.wand-box { position: relative; font-size: 85px; cursor: pointer; user-select: none; transition: transform 0.3s; animation: wiggle 2.5s infinite ease-in-out; }
+@keyframes wiggle { 0%, 100% { transform: rotate(0deg) translateY(0); } 25% { transform: rotate(-12deg) translateY(-6px); } 75% { transform: rotate(12deg) translateY(6px); } }
+.wand-box.casting { animation: castSpell 0.8s ease-in-out forwards; }
+@keyframes castSpell { 0% { transform: rotate(0deg) scale(1); } 30% { transform: rotate(-40deg) scale(1.25); } 60% { transform: rotate(50deg) scale(1.35); } 100% { transform: rotate(0deg) scale(1); } }
+.sparkle-tip { position: absolute; top: -5px; right: -5px; font-size: 30px; animation: glowSparkle 1.2s infinite alternate; filter: drop-shadow(0 0 12px #ffe600); }
+@keyframes glowSparkle { 0% { opacity: 0.3; transform: scale(0.8) rotate(0deg); } 100% { opacity: 1; transform: scale(1.5) rotate(180deg); } }
+.btn-cast { background: linear-gradient(45deg, #ff758c, #ff7eb3, #7272f7, #62c2ff); background-size: 300% 300%; animation: gradientBg 3s ease infinite; color: white; border: none; padding: 14px 40px; font-size: 22px; font-weight: 700; border-radius: 50px; cursor: pointer; box-shadow: 0 0 25px rgba(255, 118, 178, 0.7); transition: all 0.3s; }
+.btn-cast:hover { transform: scale(1.08); box-shadow: 0 0 35px rgba(255, 118, 178, 0.95); }
+.btn-cast:active { transform: scale(0.95); }
+@keyframes gradientBg { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+.ping-effect { position: fixed; font-size: 45px; font-weight: bold; color: #fff200; text-shadow: 0 0 15px #ff00ea, 0 0 25px #00ffff; opacity: 0; pointer-events: none; transition: all 0.5s ease-out; z-index: 99; }
+.ping-effect.show { animation: pingAnim 0.7s ease-out forwards; }
+@keyframes pingAnim { 0% { opacity: 1; transform: scale(0.2) translateY(0); } 50% { opacity: 1; transform: scale(1.8) translateY(-25px); } 100% { opacity: 0; transform: scale(2.4) translateY(-50px); } }
+.paper-wrapper { display: none; margin-top: 15px; width: 100%; position: relative; }
+.paper-wrapper.show { display: block; animation: popUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, paperFloat 3.5s ease-in-out infinite alternate; }
+@keyframes popUp { 0% { opacity: 0; transform: scale(0.1) translateY(60px); } 100% { opacity: 1; transform: scale(1) translateY(0); } }
+@keyframes paperFloat { 0% { transform: translateY(0px) rotate(-0.5deg); } 100% { transform: translateY(-10px) rotate(0.5deg); } }
+.paper { background: #fffdf9; color: #2d2b3a; border-radius: 24px; padding: 28px; text-align: left; position: relative; border: 3px solid #ffb6c1; animation: rainbowAura 3s linear infinite; }
+@keyframes rainbowAura { 0% { box-shadow: 0 0 25px #ff758c, 0 0 45px #ff7eb3; } 33% { box-shadow: 0 0 25px #7272f7, 0 0 45px #62c2ff; } 66% { box-shadow: 0 0 25px #50e3c2, 0 0 45px #ffdd67; } 100% { box-shadow: 0 0 25px #ff758c, 0 0 45px #ff7eb3; } }
+.top-left-title { font-size: 15px; font-weight: 700; color: #ff477e; margin-bottom: 14px; text-align: left; opacity: 0.95; }
+.paragraph { font-size: 15px; line-height: 1.8; color: #3d3d3d; margin-bottom: 14px; text-indent: 18px; word-break: break-word; }
+.sparkle-particle { position: fixed; pointer-events: none; animation: sparkleFade 1s ease-out forwards; z-index: 100; }
+@keyframes sparkleFade { 0% { opacity: 1; transform: scale(0.5) translate(0, 0); } 100% { opacity: 0; transform: scale(1.6) translate(var(--dx), var(--dy)); } }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="wand-box" id="wand"><span class="sparkle-tip">✨</span>🪄</div>
+<button class="btn-cast" id="castBtn" onclick="castSpell()">ร่ายมนต์</button>
+<div class="ping-effect" id="pingText">ปิง! ✨</div>
+<div class="paper-wrapper" id="paperWrapper">
+<div class="paper">
+<div class="top-left-title">Happy 2-month anniversary.</div>
+<p class="paragraph">สุขสันต์วันครบรอบสองเดือนนะเธอ ช่วงที่ผ่านๆมาเค้าไม่ค่อยได้ทักคุยด้วยเลย มีแค่ มอนิ่ง ฝันดี ขอโทษนะ มันอาจฟังดูเป็นข้ออ้างหน่อย เค้ายุ่งมากจริงๆ บางครั้งก็ไม่รู้จะคุยไร ไม่รู้จะทักไร แต่เค้ารักเธอเหมือนเดิมนะ ไม่ใช่ไม้รัก หรือน้อยลงเลย เกมก็ไม่ค่อยได้เล่นด้วยกันเหมือนเก่า ก็กลัวเราจะสนิทกันน้อยลง ไม่อยากให้เป็นอย่างนั่นเลย อยากให้เธออยู่ด้วยกันไปนานๆเลย เป็นเพื่อนที่ดีต่อกันแบบนี้ ตั้งแต่มีเธอเค้ามีความสุขมากเลยรู้มั้ย ถึงบางครั้งจะกังวลอยู่บ่อยๆ เพราะเค้าไม่ค่อยทักหา ทุกครั้งที่เธอบอกทำนองว่ามีไรกันบอก เค้ากลัวเสมอเลย กลัวเรื่องไม่ดี55 ยังไงก็เถอะ สองเดือนแล้วนะเธอ ยินดีที่ได้รู้จักเธอ ยิ้มเยอะๆ มีความสุขมากๆนะเธอ มีไรอยากระบาย หรือหนักใจ เค้าอยู่ตรงนี้เสมอนะ.</p>
+<p class="paragraph">เดือนนี้จนมาก ไม่สิ ช่วงนี้ ไม่มีตังให้อะ เอาความรักไปก่อนนะ5252652 รักนะ จุ้บๆๆ จ้ะโมะบรือบลาบึ้มมมผวฟ จุ้บ😋</p>
+</div>
+</div>
+</div>
+<audio id="bgMusic" src="PUN%20%E0%B8%A3%E0%B8%B1%E0%B8%81%E0%B9%83%E0%B8%AB%E0%B9%89%E0%B9%80%E0%B8%98%E0%B8%AD%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%A3%E0%B8%B9%E0%B9%89%20Proof.mp3" preload="auto"></audio>
+<script>
+function castSpell() {
+const wand = document.getElementById('wand');
+const ping = document.getElementById('pingText');
+const paper = document.getElementById('paperWrapper');
+const music = document.getElementById('bgMusic');
+const rect = wand.getBoundingClientRect();
+wand.classList.add('casting');
+createParticles(rect.left + rect.width / 2, rect.top + rect.height / 2);
+setTimeout(() => {
+ping.style.left = (rect.left + rect.width / 4) + 'px';
+ping.style.top = (rect.top - 20) + 'px';
+ping.classList.add('show');
+paper.classList.add('show');
+createParticles(rect.left + rect.width / 2, rect.top + rect.height / 2);
+if (music) {
+music.play().catch(e => console.log('Music play error:', e));
+}
+}, 400);
+setTimeout(() => {
+wand.classList.remove('casting');
+ping.classList.remove('show');
+}, 1200);
+}
+function createParticles(x, y) {
+const icons = ['✨', '⭐', '💖', '💫', '🌸', '🔮', '🎉'];
+for (let i = 0; i < 20; i++) {
+const p = document.createElement('div');
+p.className = 'sparkle-particle';
+p.innerText = icons[Math.floor(Math.random() * icons.length)];
+p.style.left = x + 'px';
+p.style.top = y + 'px';
+p.style.fontSize = (16 + Math.random() * 18) + 'px';
+p.style.setProperty('--dx', (Math.random() * 200 - 100) + 'px');
+p.style.setProperty('--dy', (Math.random() * 200 - 100) + 'px');
+document.body.appendChild(p);
+setTimeout(() => p.remove(), 1000);
+}
+}
+</script>
+</body>
+</html>
